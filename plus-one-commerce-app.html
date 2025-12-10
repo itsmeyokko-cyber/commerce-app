@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plus One Commerce Study Hub - Portable</title>
+    
+    <style>
+/* --- General & Responsive Layout --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    line-height: 1.6;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+nav a:hover {
+    background: #555;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    background: #fff;
+    padding: 40px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    flex: 1 1 300px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 600px) {
+    nav a {
+        display: block;
+        padding: 8px;
+    }
+    .card-container {
+        flex-direction: column;
+    }
+}
+
+/* --- Modal (Chat Interface) Styling --- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; 
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- Chat Specific Styling --- */
+#auth-section {
+    padding: 20px;
+    text-align: center;
+}
+
+#chat-section {
+    display: flex; 
+    flex-direction: column;
+    height: 350px;
+}
+
+#messages {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#m, #chat-password {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+#auth-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#send-button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* User-specific chat bubble styling */
+.chat-message {
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-size: 0.9em;
+}
+
+.chat-message strong {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.chat-message.me {
+    background-color: #dcf8c6; 
+    margin-left: auto; 
+    text-align: right;
+}
+.chat-message.me strong {
+    color: #0056b3;
+}
+
+.chat-message.other {
+    background-color: #e5e5ea; 
+    margin-right: auto; 
+    text-align: left;
+}
+.chat-message.other strong {
+    color: #1e7e34;
+}
+
+.chat-message.system {
+    text-align: center;
+    font-style: italic;
+    color: #6c757d;
+    background: none;
+    max-width: 100%;
+}
+    </style>
+    </head>
+<body>
+    <header>
+        <h1>Plus One Commerce Central</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Business History</a> 
+            <a href="#">Micro Economics</a> 
+            
+            <a href="#" id="chat-link">Tutor Contact</a> 
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to Your Study Hub</h2>
+            <p>Your comprehensive resource for Plus One Commerce subjects. Dive into well-structured notes and revision materials.</p>
+        </section>
+
+        <section class="content-preview">
+            <h3>Featured Topics</h3>
+            <div class="card-container">
+                <div class="card">
+                    <h4>Business Environment</h4>
+                    <p>Understanding the external and internal factors affecting a business.</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="card">
+                    <h4>Demand Analysis</h4>
+                    <p>The core concepts of demand, elasticity, and utility.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="chat-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            
+            <div id="auth-section">
+                <h2>Tutor Contact</h2>
+                <p>Enter help desk password:</p>
+                <input type="password" id="chat-password" placeholder="Password">
+                <button id="auth-button">Enter</button>
+                <p id="auth-message" style="color: red;"></p>
+            </div>
+            
+            <div id="chat-section" style="display: none;">
+                <div id="messages"></div>
+                <div style="display: flex; gap: 5px;"> 
+                    <input id="m" autocomplete="off" placeholder="Type a message..." style="flex-grow: 1;" />
+                    <button id="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script> 
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- DOM Elements ---
+    const chatLink = document.getElementById('chat-link');
+    const modal = document.getElementById('chat-modal');
+    const closeButton = document.getElementsByClassName('close-button')[0];
+    const authSection = document.getElementById('auth-section');
+    const chatSection = document.getElementById('chat-section');
+    const passwordInput = document.getElementById('chat-password');
+    const authButton = document.getElementById('auth-button');
+    const authMessage = document.getElementById('auth-message');
+    const messages = document.getElementById('messages');
+    const messageInput = document.getElementById('m');
+    const sendButton = document.getElementById('send-button');
+
+    let socket = null;
+    let isTutor = false; 
+
+    // --- Modal Control ---
+    chatLink.onclick = function() {
+        modal.style.display = 'block';
+    }
+
+    closeButton.onclick = function() {
+        modal.style.display = 'none';
+        if (socket && socket.connected) {
+            socket.disconnect();
+            socket = null;
+            // Reset UI
+            authSection.style.display = 'block';
+            chatSection.style.display = 'none';
+            messages.innerHTML = '';
+            authMessage.textContent = '';
+            passwordInput.value = '';
+        }
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // --- Authentication Logic ---
+    authButton.onclick = function() {
+        const password = passwordInput.value.trim();
+        if (!password) {
+            authMessage.textContent = "Please enter the password.";
+            return;
+        }
+
+        socket = io(); 
+
+        socket.on('connect', () => {
+            socket.emit('chat_auth', password);
+        });
+
+        // Handle successful authentication
+        socket.on('auth_success', (userRole) => {
+            isTutor = (userRole === 'tutor');
+            authSection.style.display = 'none';
+            chatSection.style.display = 'flex'; 
+            modal.querySelector('h2').textContent = `Chat: Logged in as ${userRole}`;
+            
+            addMessage('System', 'Welcome to the chat. Start typing!', 'system');
+        });
+
+        // Handle authentication failure
+        socket.on('auth_fail', (reason) => {
+            authMessage.textContent = reason;
+            if (socket) socket.disconnect();
+        });
+        
+        // Handle server messages (user status)
+        socket.on('user_status', (status) => {
+            addMessage('System', status, 'system');
+        });
+
+        // Handle incoming chat messages
+        socket.on('chat_message', (data) => {
+            const messageRole = data.user === (isTutor ? 'Tutor' : 'Student') ? 'me' : 'other';
+            addMessage(data.user, data.text, messageRole);
+        });
+    }
+
+    // --- Message Sending Logic ---
+    sendButton.onclick = function() {
+        sendMessage();
+    }
+    messageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
+        const msg = messageInput.value.trim();
+        if (msg && socket && socket.connected) {
+            socket.emit('chat_message', msg);
+            messageInput.value = ''; 
+        }
+    }
+
+    // Helper function to display messages
+    function addMessage(user, text, type) {
+        const item = document.createElement('div');
+        item.classList.add('chat-message', type);
+        item.innerHTML = `<strong>${user}:</strong> ${text}`;
+        messages.appendChild(item);
+        messages.scrollTop = messages.scrollHeight; 
+    }
+});
+    </script>
+    </body>
+</html>
