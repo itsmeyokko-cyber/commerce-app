@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plus One Commerce Study Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Plus One Commerce Central</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="history.html">Business History</a> 
+            <a href="#">Micro Economics</a> <a href="#" id="chat-link">Tutor Contact</a> 
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to Your Study Hub</h2>
+            <p>Your comprehensive resource for Plus One Commerce subjects. Dive into well-structured notes and revision materials.</p>
+        </section>
+
+        <section class="content-preview">
+            <h3>Featured Topics</h3>
+            <div class="card-container">
+                <div class="card">
+                    <h4>Business Environment</h4>
+                    <p>Understanding the external and internal factors affecting a business.</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="card">
+                    <h4>Demand Analysis</h4>
+                    <p>The core concepts of demand, elasticity, and utility.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="chat-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            
+            <div id="auth-section">
+                <h2>Tutor Contact</h2>
+                <p>Enter help desk password:</p>
+                <input type="password" id="chat-password" placeholder="Password">
+                <button id="auth-button">Enter</button>
+                <p id="auth-message" style="color: red;"></p>
+            </div>
+            
+            <div id="chat-section" style="display: none;">
+                <div id="messages"></div>
+                <div style="display: flex; gap: 5px;"> 
+                    <input id="m" autocomplete="off" placeholder="Type a message..." style="flex-grow: 1;" />
+                    <button id="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
